@@ -1,12 +1,18 @@
-import express from "express";
+import express, { json } from 'express'
 
 const app = express();
 
-app.get('/', (req, res) => {
-    res.send('<h1>Hi, man!</h1>');
-});
+app.use(json());
+
+app.post('/auth/login', function (req, res) {
+  console.log(req.body);
+  res.json({
+    success: true
+  })
+})
 
 app.listen(4444, (err) => {
+    
     if (err) {
         return console.log(err);
     }
